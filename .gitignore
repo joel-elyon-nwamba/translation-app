@@ -1,0 +1,5 @@
+# Dependency folders (keeps your repo small)
+node_modules/
+
+# Private environment variables (protects your OpenAI key)
+.env
