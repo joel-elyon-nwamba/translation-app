@@ -3,10 +3,74 @@
 }
 
 body {
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    margin: 0 auto;
+    width: 390px;
+    height: 780px;
+    background-color: #fff;
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     background-image: url('../img/worldmap.png');
+    background-size: cover;
+    background-position: center;
+    height: 213px;
+
 }
+
+.navbar-title {
+    color: #32CD32;
+    font-size: 43px;
+    padding-bottom: 0;
+}
+
+.navbar-subtitle{
+    color: #fff;
+    font-size: 15px;
+    padding-top: 0;
+    position: relative;
+    bottom: 30px;
+    line-height: 0.5;
+    letter-spacing: 1px
+}
+
+.navbar-logo {
+    width: 100px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border: 4px solid #252F42;
+}
+
+.main-title {
+    color: #035A9D;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.main-title:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.text-entry {
+    width: 319px;
+    height: 118px;
+    background-color: #EFF0F4;
+    border: none;
+    border-radius: 5px;
+    color:#333333;
+    font-size: 25px;
+}
+
+
+
+
