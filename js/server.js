@@ -2,9 +2,10 @@ import OpenAI from "openai";
 
 const express = require("express");
 const app = express();
+app.use(express.json());
 const PORT = 3000;
 
-const request = new OpenAI({
+const openai = new OpenAI({
   apiKey: process.env.AI_KEY,
   baseURL: process.env.AI_URL
 })
@@ -48,18 +49,22 @@ South America (9)
   }
 ];
 
-app.post('/api/translator', (req, res) => {
-  const { userPrompt } = req.body
+app.post('/api/translator', async (req, res) => {
+  const { userInput } = req.body
 
   messages.push({
     role:"user",
-    content: userPrompt
+    content: userInput
   });
 
-  const respond = openai.chat.completions.create({
+  const respond = await openai.chat.completions.create({
     model: process.env.AI_MODEL,
     messages
   })
+
+  // Extract the response from AI
+  const suggestedTranslator = respond.choices[0].message.content;
+  res.json({ suggestedTranslator })
 
 });
 
