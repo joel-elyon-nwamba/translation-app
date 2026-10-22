@@ -4,15 +4,20 @@
  const textareaInput = document.createElement("textarea");
  const translator = document.getElementById("translator");
 const userInput = document.getElementById("user-input")
-
-
+let selectedValue = ""
 async function tanslationHandler(e) {
     e.preventDefault();
     // Grab the users input 
-    userInput.value.trim();
-    if(!userInput) return
+    const text = userInput.value.trim();
+    if(text === "") return;
+// check if radio has been selected
+const radioSelector = document.querySelector("input[name=language]:checked")
+if(radioSelector) {
+    selectedValue = radioSelector.value;
 
+} else if(!radioSelector) return;
     // Grab the Api
+    let targetLanguage = ""
     try{
 
         const response = await fetch("/api/translator", {
@@ -20,7 +25,7 @@ async function tanslationHandler(e) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ userInput })
+            body: JSON.stringify({ userInput: text, targetLanguage: selectedValue })
         });
 
         // grab the data
@@ -42,3 +47,6 @@ async function tanslationHandler(e) {
 
 }
 
+const joel = {
+    carModel: "Hone"
+}

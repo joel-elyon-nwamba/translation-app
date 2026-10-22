@@ -50,7 +50,7 @@ South America (9)
 ];
 
 app.post('/api/translator', async (req, res) => {
-  const { userInput } = req.body
+  const { userInput, targetLanguage } = req.body
 
   messages.push({
     role:"user",
