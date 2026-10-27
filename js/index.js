@@ -30,6 +30,9 @@ async function translateHandler(e) {
         },
         body: JSON.stringify( translationData )
     })
+    const data = await response.json();
+    console.log(data.translation);
+
 }
 
 
