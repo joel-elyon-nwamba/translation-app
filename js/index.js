@@ -1,6 +1,12 @@
 // Grab DOM
 const userInput = document.getElementById("user-input");
 const btnTranslate = document.getElementById("btn-translate");
+const translator = document.getElementById("translator");
+const titleTransform = document.getElementById("title-transform");
+const titleLanguage = document.getElementById("title-language");
+const textareaTranslator = document.createElement("textarea");
+const startOverBtn = document.createElement("button");
+const radioOption = document.querySelectorAll(".radio-option");
 
 async function translateHandler(e) {
     e.preventDefault();
@@ -32,7 +38,23 @@ async function translateHandler(e) {
     })
     const data = await response.json();
     console.log(data.translation);
+    textareaTranslator.classList.add("translate-one");
+    startOverBtn.classList.add("start-over");
+    startOverBtn.textContent = "Start Over";
+    translator.appendChild(textareaTranslator);
+    translator.appendChild(startOverBtn);
+    textareaTranslator.value = data.translation;
+    titleTransform.textContent = "Original Text 👇🏾";
+    titleLanguage.textContent = "Your Translation 👇🏾"
+    radioOption.forEach((option) => {
+    option.style.display = "none";
+});
+btnTranslate.style.display = "none";
+}
 
+
+function startOver() {
+    
 }
 
 
