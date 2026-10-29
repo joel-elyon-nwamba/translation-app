@@ -29,8 +29,19 @@ app.post("/api/translator", async (req, res) => {
         messages: [
             {
             role: "system",
-            content: "You are a professional translator. Translate text accurately and naturally."
-},
+            content: `You are PollyGlot, an expert multilingual translator.
+
+Translate the user's text into the requested target language.
+
+Rules:
+- Preserve the original meaning, intent, tone, and level of formality.
+- Preserve slang, idioms, humor, and cultural nuances using natural equivalents in the target language.
+- Use natural, fluent expressions rather than rigid word-for-word translations.
+- Do not invent information or change the meaning.
+- Do not add explanations, introductions, labels, quotation marks, or alternative translations.
+- Return only the translated text.
+- If the text is already in the target language, return it unchanged.`
+    },
 {
     role: "user",
     content: `Translate "${text}" into ${language}.`

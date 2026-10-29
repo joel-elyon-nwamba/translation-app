@@ -29,7 +29,8 @@ async function translateHandler(e) {
         language: seletctedValue
     }
     console.log(translationData)
-    const response = await fetch("http://localhost:3000/api/translator", {
+    try {
+        const response = await fetch("http://localhost:3000/api/translator", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -41,6 +42,8 @@ async function translateHandler(e) {
     textareaTranslator.classList.add("translate-one");
     startOverBtn.classList.add("start-over");
     startOverBtn.textContent = "Start Over";
+    textareaTranslator.style.display = "block";
+    startOverBtn.style.display = "block";
     translator.appendChild(textareaTranslator);
     translator.appendChild(startOverBtn);
     textareaTranslator.value = data.translation;
@@ -48,15 +51,35 @@ async function translateHandler(e) {
     titleLanguage.textContent = "Your Translation 👇🏾"
     radioOption.forEach((option) => {
     option.style.display = "none";
-});
+    
+})
+
 btnTranslate.style.display = "none";
+    } catch(error) {
+        console.error("Translation failed:", error);
+    }
 }
 
 
-function startOver() {
-    
+function startOverHandler() {
+    userInput.value = "";
+    textareaTranslator.value = "";
+    textareaTranslator.style.display = "none";
+    const selectedLanguage = document.querySelector("input[name=language]:checked");
+
+if (selectedLanguage) {
+    selectedLanguage.checked = false;
+}
+    startOverBtn.style.display = "none";
+    radioOption.forEach((option) => {
+        option.style.display = "block";
+    });
+    titleTransform.textContent = "Text Translation👇🏾";
+    titleLanguage.textContent = "Select Language👇🏾";
+    btnTranslate.style.display = "block";
 }
 
 
 // Add an event listener to see that it's working before we move on database
 btnTranslate.addEventListener("click", translateHandler);
+startOverBtn.addEventListener("click", startOverHandler);

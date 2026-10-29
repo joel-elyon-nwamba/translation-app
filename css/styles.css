@@ -61,7 +61,8 @@ body {
     text-decoration: underline;
 }
 
-.text-entry {
+.text-entry,
+.translate-one {
     width: 319px;
     height: 118px;
     background-color: #EFF0F4;
@@ -70,6 +71,8 @@ body {
     color:#333333;
     font-size: 25px;
 }
+
+
 
 .radio-option {
     display: flex;
@@ -85,7 +88,8 @@ body {
     border: 1px solid #000;
 }
 
-.btn-translate {
+#btn-translate,
+.start-over {
     width: 319px;
     height: 50px;
     background-color: #035A9D;
