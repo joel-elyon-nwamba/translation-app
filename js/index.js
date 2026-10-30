@@ -61,7 +61,8 @@ btnTranslate.style.display = "none";
 }
 
 
-function startOverHandler() {
+function startOverHandler(e) {
+    e.preventDefault();
     userInput.value = "";
     textareaTranslator.value = "";
     textareaTranslator.style.display = "none";

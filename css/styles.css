@@ -70,6 +70,10 @@ body {
     border-radius: 5px;
     color:#333333;
     font-size: 25px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    
 }
 
 
@@ -99,6 +103,12 @@ body {
     border: none;
     border-radius: 5px;
     margin: 40px;
+}
+
+#btn-translate:hover,
+.start-over:hover {
+    cursor: pointer;
+    background-color: #32CD32;
 }
 
 
